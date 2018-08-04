@@ -1,0 +1,18 @@
+[Unit]
+Description=kubelet
+Requires=docker.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStart=/home/pi/kubernetes/node/bin/kubelet \
+  --address=127.0.0.1 \
+  --allow-privileged=true \
+  --config=/etc/kubernetes/config.yaml \
+  --pod-infra-container-image="k8s.gcr.io/pause-arm:3.1" \
+  --pod-manifest-path=/home/pi/kubelet \
+  --v=2
+
+[Install]
+WantedBy=multi-user.target

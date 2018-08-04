@@ -1,0 +1,11 @@
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+StaticPodPath: /home/pi/kubelet
+FileCheckFrequency: 10s
+authentication:
+ webhook:
+   enabled: false
+ anonymous:
+   enabled: true
+authorization:
+  mode: AlwaysAllow
